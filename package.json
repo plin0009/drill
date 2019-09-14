@@ -1,0 +1,34 @@
+{
+  "name": "drill",
+  "version": "0.0.1",
+  "description": "Turn boring textbooks into fun and interactive games.",
+  "main": "server.js",
+  "scripts": {
+    "clean": "rimraf dev_client .cache docs",
+    "dev-client": "parcel src/*.html -d dev_client",
+    "build": "parcel build src/*.html -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plin0009/drill.git"
+  },
+  "author": "Peter Lin <plin0009@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plin0009/drill/issues"
+  },
+  "homepage": "https://github.com/plin0009/drill#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "bulma": "^0.7.5",
+    "parcel-bundler": "^1.12.3",
+    "rimraf": "^3.0.0",
+    "sass": "^1.22.12"
+  }
+}
