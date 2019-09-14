@@ -6,6 +6,8 @@
   "scripts": {
     "clean": "rimraf dev_client .cache docs",
     "dev-client": "parcel src/*.html -d dev_client",
+    "dev-server": "nodemon server.js --ignore src/ --ignore docs --ignore .cache --ignore dev_client",
+    "dev": "nodemon server.js --ignore src/ --ignore docs --ignore .cache --ignore dev_client",
     "build": "parcel build src/*.html -d docs --public-url ./"
   },
   "repository": {
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/plin0009/drill#readme",
   "dependencies": {
+    "@google-cloud/language": "^3.2.6",
     "express": "^4.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -27,6 +30,8 @@
   },
   "devDependencies": {
     "bulma": "^0.7.5",
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.2",
     "parcel-bundler": "^1.12.3",
     "rimraf": "^3.0.0",
     "sass": "^1.22.12"
