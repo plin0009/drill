@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 const httpServer = require('http').Server(app);
+const cors = require('cors');
 /* const io = require('socket.io')(httpServer); */
 const language = require('@google-cloud/language');
 const client = new language.LanguageServiceClient();
@@ -18,7 +19,7 @@ const syntax3 = require('./testfiles/syntax3.json'); */
 
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })) // ?
+app.use(cors());
 
 app.post('/parse-text', async (req, res) => {
     const data = {
@@ -44,7 +45,10 @@ app.post('/parse-text', async (req, res) => {
     
     console.log(questions);
 
-    res.send({/* entities: entitiesResult,  */syntax: syntaxResult});
+    //res.send({/* entities: entitiesResult,  */syntax: syntaxResult});
+    res.send({
+        questions: questions
+    });
 });
 
 httpServer.listen(port, () => console.log(`listening on port ${port}`));

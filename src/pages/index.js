@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import Layout from '../components/Layout';
 
 ReactDOM.render(
-    <Layout>
+    <Layout navbarFixed={true}>
         <section className="hero is-fullheight">
             <div className="hero-body">
-                <div className="container">
-                    <h1 className="title">Tagline.</h1>
-                    <button className="button is-dark is-large is-rounded">Call to Action</button>
+                <div className="container has-text-centered">
+                    <h1 className="title is-1">Simplify. Gamify.</h1>
+                    <h2 className="subtitle">Turn boring textbooks into bite-sized quizzes.</h2>
+                    <a href="machine.html" className="button is-dark is-large is-rounded">See for yourself</a>
                 </div>
             </div>
         </section>

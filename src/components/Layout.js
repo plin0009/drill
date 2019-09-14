@@ -1,13 +1,14 @@
 import React from 'react';
-import '../styles/styles.scss';
+import '../assets/styles/styles.scss';
+import Logo from '../assets/images/logo.svg';
 class Layout extends React.Component {
     render() {
         return (
             <>
-                <nav className="navbar is-fixed-top is-spaced">
+                <nav className={'navbar is-spaced' + (this.props.navbarFixed ? ' is-fixed-top' : '')}>
                     <div className="navbar-brand">
                         <a href="/" className="navbar-item">
-                            <h1 className="title">drill</h1>
+                            <img className="logo" src={Logo} alt="drill logo"/>
                         </a>
                     </div>
                 </nav>
