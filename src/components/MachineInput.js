@@ -19,7 +19,7 @@ class MachineInput extends React.Component {
         });
     }
     feed() {
-        fetch('localhost:3000/parse-text', {
+        fetch('https://us-central1-you-know-the-drill.cloudfunctions.net/api/new-drillcode', {
             method: 'POST',
             body: JSON.stringify({
                 text: this.state.text
@@ -28,7 +28,10 @@ class MachineInput extends React.Component {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            window.location.href = '/drillcode?code=' + data.key;
+        })
         .catch(error => console.error(error));
     }
     render() {
