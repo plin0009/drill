@@ -19,13 +19,17 @@ $dark: $green;
 
 $navbar-background-color: $light-green;
 $body-background-color: $lighter-green;
-$footer-background-color: $light-green;
+$footer-background-color: $lighter-green;
 $box-background-color: $light-green;
 $title-color: $primary;
 $subtitle-color: $dark-grey-green;
 $text: $darker-grey-green;
 
 @import "../../../node_modules/bulma/bulma.sass";
+
+html {
+    overflow-y: auto;
+}
 
 .logo {
     width: 5rem;

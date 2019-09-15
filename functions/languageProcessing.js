@@ -70,7 +70,7 @@ const indicesToWords = (graph, indexArray, replacer) => {
     });
 }
 
-const getSubjectQuestion = (graph) => {
+const getSubjectQuestion = (graph, entities) => {
     let subj = [];
     let notSubj = [];
     let subjIndex = 0;
@@ -96,7 +96,7 @@ const getSubjectQuestion = (graph) => {
         wrong: getWrongAnswers(answerList, entities, 3)
     }
 }
-const getObjectQuestion = (graph) => {
+const getObjectQuestion = (graph, entities) => {
     let obj = [];
     let notObj = [];
     let objIndex = 0;
@@ -122,7 +122,7 @@ const getObjectQuestion = (graph) => {
         wrong: getWrongAnswers(answerList, entities, 3)
     }
 }
-const getTrueOrFalse = (graph) => {
+const getTrueOrFalseQuestion = (graph) => {
     let statement = [];
     for (let i = 0; i < graph.length; i++) {
         if (!graph[i].parent) {
@@ -130,17 +130,17 @@ const getTrueOrFalse = (graph) => {
         }
     }
     return {
-        question: answerify(indicesToWords(graph, statement)),
-        answer: 'True.',
+        question: indicesToWords(graph, statement).join(' '),
+        answer: 'True.',    // default true or false question is just the sentence, with True as the answer
         wrong: ["False."]
     }
 }
-const getWrongAnswers = (right, entities, length=3) => {
+const getWrongAnswers = (right, entities, length = 3) => {
     let wrong = [];
     for (let i = 0; i < entities.length; i++) {
         if (entities[i].word !== right) {
-            wrong.push(entities[i].word);
-            if (wrong.length > length * 2) {
+            wrong.push(answerify(entities[i].word.split(' ')));
+            if (wrong.length > length * 3) {
                 break;
             }
         }
@@ -174,7 +174,7 @@ module.exports = {
     indicesToWords: indicesToWords,
     getSubjectQuestion: getSubjectQuestion,
     getObjectQuestion: getObjectQuestion,
-    getTrueOrFalse: getTrueOrFalse,
+    getTrueOrFalseQuestion: getTrueOrFalseQuestion,
     questionify: questionify,
     answerify: answerify
 }
